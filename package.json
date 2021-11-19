@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
+    "clean": "npx rimraf dist",
+    "build": "npm run clean && tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "standard-version"
   },
@@ -14,6 +16,7 @@
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
     "husky": "^7.0.4",
-    "standard-version": "^9.3.2"
+    "standard-version": "^9.3.2",
+    "typescript": "^4.5.2"
   }
 }
