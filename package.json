@@ -1,0 +1,19 @@
+{
+  "name": "@bytelabsco/bumblebee",
+  "version": "0.0.0",
+  "description": "A javascript based SCSS/CSS utility class generator",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky install",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "standard-version"
+  },
+  "author": "Jeremy Ramsey",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "husky": "^7.0.4",
+    "standard-version": "^9.3.2"
+  }
+}
