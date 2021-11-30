@@ -4,6 +4,7 @@
   "description": "A javascript based SCSS/CSS utility class generator",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "private": false,
   "scripts": {
     "prepare": "husky install",
     "clean": "npx rimraf dist",
