@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.2.0 (2021-11-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* move sass to a dependency
+
+### Bug Fixes
+
+* move sass to a dependency ([8a83e82](https://github.com/bytelabsco/bumblebee/commit/8a83e82c51673cdb6ad12129e433fee6296655ca))
+
 ## 0.1.0 (2021-11-30)
 
 

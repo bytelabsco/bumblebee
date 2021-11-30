@@ -1,6 +1,6 @@
 {
   "name": "@bytelabsco/bumblebee",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A javascript based SCSS/CSS utility class generator",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
