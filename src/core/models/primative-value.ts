@@ -1,0 +1,1 @@
+export type PrimativeValue = number | string | boolean;

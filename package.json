@@ -16,10 +16,15 @@
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
     "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.10",
     "husky": "^7.0.4",
     "jest": "^27.3.1",
+    "sass": "^1.43.5",
     "standard-version": "^9.3.2",
     "ts-jest": "^27.0.7",
     "typescript": "^4.5.2"
+  },
+  "standard-version": {
+    "releaseCommitMessageFormat": "chore(release): v{{currentTag}} [skip ci]"
   }
 }

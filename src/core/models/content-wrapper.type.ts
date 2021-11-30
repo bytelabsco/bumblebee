@@ -1,0 +1,1 @@
+export type contentWrapper = (contents: string) => string;
