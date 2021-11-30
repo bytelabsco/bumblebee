@@ -38,18 +38,12 @@ const generateExtendedClasses = (utilities: Map<string, UtilityDefinition>, resp
 
     let scssUtilities = '';
 
-    
-
     const prefix = !!responsiveOptions ? `.${responsiveOptions.prefix}\\:` : '.';
-
-    console.log('pre-mixinNamespace', mixinNamespace);
 
     mixinNamespace = mixinNamespace || '';
     if(mixinNamespace.length > 0 && !mixinNamespace.endsWith('.')){
         mixinNamespace += '.';
     }
-
-    console.log('post-mixinNamespace', mixinNamespace);
 
     for(const [name, def] of utilities) {
 
