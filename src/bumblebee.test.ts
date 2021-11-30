@@ -1,6 +1,8 @@
+import { Bumblebee } from './bumblebee';
+
 import { Configuration} from "./configuration/configuration.interface";
 import { NestedConfigCollection, VarEntry } from "./core/models";
-import { asPercentage } from "./helpers/as-percentage.function";
+import { asPercentage } from "./helpers";
 
 const baseSizeUnits = 'rem';
 const baseSize = 1;
@@ -19,11 +21,10 @@ const colors: NestedConfigCollection<VarEntry> = {
     'light': {value: '#f3f3f3', themes: {'dark': {value: '#1a1a1a'}} }
 };
 
-export const defaultConfiguration: Configuration = {
+export const sampleConfiguration: Configuration = {
     outputPath: '_output',
     namespace: {
-        prefix: '',
-        classes: 'my-class',
+        prefix: 'my-class',
         vars: 'my-var'
     },
     vars: {
@@ -147,3 +148,9 @@ export const defaultConfiguration: Configuration = {
         }
     }
 };
+
+test('should generate defaults', () => {
+
+    Bumblebee.generate(sampleConfiguration);
+
+});
