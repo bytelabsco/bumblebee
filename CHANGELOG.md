@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.1 (2021-11-30)
+
+
+### Bug Fixes
+
+* removed a console.log debugging statement that was missed ([bb7cfe2](https://github.com/bytelabsco/bumblebee/commit/bb7cfe24d3795892fbab6ba05b341f2210883b2b))
+
 ## 0.2.0 (2021-11-30)
 
 
