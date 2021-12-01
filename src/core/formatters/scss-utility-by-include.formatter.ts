@@ -23,7 +23,6 @@ export const scssUtilityByIncludeFormatter: Formatter<ScssUtilityByIncludeFormat
         for(const breakpoint of Object.keys(options.breakpoints)) {
 
             let breakpointValue = options.breakpoints[breakpoint];
-            breakpointValue = cssVariableReferenceFormatter(breakpointValue);
 
             const breakpointWrapper: contentWrapper = (c) => `@media ${breakpointValue} { ${NEW_LINE}${c}${NEW_LINE}}`;
 
