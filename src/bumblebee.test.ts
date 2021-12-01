@@ -39,9 +39,9 @@ export const sampleConfiguration: Configuration = {
         breakpoints: breakpoints
     },
     breakpoints: {
-        'sm': '(min-width: {breakpoints.sm})',
-        'md': '(min-width: {breakpoints.md})',
-        'lg': '(min-width: {breakpoints.lg})'
+        'sm': `(min-width: ${breakpoints.sm.value})`,
+        'md': `(min-width: ${breakpoints.md.value})`,
+        'lg': `(min-width: ${breakpoints.lg.value})`
     },
     themes: {
         'dark': [
