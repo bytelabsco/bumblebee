@@ -2,6 +2,7 @@ import { NEW_LINE } from "../constants";
 import { BreakpointCollection, contentWrapper } from "../models";
 import { UtilityDefinition } from "../models/utility-definition";
 import { Namespacer } from "../utilities/namespacer";
+import { cssVariableReferenceFormatter } from "./css-variable-reference.formatter";
 import { Formatter } from "./formatter.interface";
 import { tokenToStyleSeparatorFormatter } from "./token-to-style-separator.formatter";
 
@@ -21,7 +22,8 @@ export const scssUtilityByIncludeFormatter: Formatter<ScssUtilityByIncludeFormat
 
         for(const breakpoint of Object.keys(options.breakpoints)) {
 
-            const breakpointValue = options.breakpoints[breakpoint];
+            let breakpointValue = options.breakpoints[breakpoint];
+            breakpointValue = cssVariableReferenceFormatter(breakpointValue);
 
             const breakpointWrapper: contentWrapper = (c) => `@media ${breakpointValue} { ${NEW_LINE}${c}${NEW_LINE}}`;
 
