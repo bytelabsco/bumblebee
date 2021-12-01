@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.3 (2021-12-01)
+
+
+### Bug Fixes
+
+* fixed a substring call in the variable reference formatter ([eb45d15](https://github.com/bytelabsco/bumblebee/commit/eb45d1574cbeab5a017906863c7f32787f21e6e0))
+
 ### 0.2.2 (2021-12-01)
 
 
