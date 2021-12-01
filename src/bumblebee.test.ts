@@ -1,7 +1,7 @@
 import { Bumblebee } from './bumblebee';
 
 import { Configuration} from "./configuration/configuration.interface";
-import { NestedConfigCollection, VarEntry } from "./core/models";
+import { BreakpointCollection, NestedConfigCollection, VarEntry } from "./core/models";
 import { asPercentage } from "./helpers";
 
 const baseSizeUnits = 'rem';
@@ -21,6 +21,12 @@ const colors: NestedConfigCollection<VarEntry> = {
     'light': {value: '#f3f3f3', themes: {'dark': {value: '#1a1a1a'}} }
 };
 
+const breakpoints: NestedConfigCollection<VarEntry> = {
+    'sm': { value: '36em' },
+    'md': { value: '48em' },
+    'lg': { value: '62em' }
+}
+
 export const sampleConfiguration: Configuration = {
     outputPath: '_output',
     namespace: {
@@ -29,12 +35,13 @@ export const sampleConfiguration: Configuration = {
     },
     vars: {
         colors: colors,
-        scale: sizeScale
+        scale: sizeScale,
+        breakpoints: breakpoints
     },
     breakpoints: {
-        'sm': '(min-width: 36em)',
-        'md': '(min-width: 48em)',
-        'lg': '(min-width: 62em)'
+        'sm': '(min-width: {breakpoints.sm})',
+        'md': '(min-width: {breakpoints.md})',
+        'lg': '(min-width: {breakpoints.lg})'
     },
     themes: {
         'dark': [
