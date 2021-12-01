@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.2 (2021-12-01)
+
+
+### Features
+
+* ability to use vars within breakpoint definitions ([994393d](https://github.com/bytelabsco/bumblebee/commit/994393d2739ff328a6e7fc1a688e40d6ccec1ae8))
+
 ### 0.2.1 (2021-11-30)
 
 
