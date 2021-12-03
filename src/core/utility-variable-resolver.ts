@@ -43,23 +43,30 @@ export class UtilityVariableResolver {
 
             if(isUtilityEntry(utilityValue)){
 
-                if(typeof(utilityValue.use) === 'string') {
+                if(typeof(utilityValue.use) === 'string' || Array.isArray(utilityValue.use)) {
 
-                    let varNamePrefix = utilityValue.use;
-                    if(!varNamePrefix.endsWith(TOKEN_SEPARATOR)) {
-                        varNamePrefix = varNamePrefix + TOKEN_SEPARATOR;
-                    }
-
-                    const matchedTokenKeys = [...varTokens.keys()].filter(k => k.startsWith(varNamePrefix));
-                    if(matchedTokenKeys.length === 0){
-                        throw new Error(`No variables match prefix ${utilityValue.use}`);
+                    if(typeof(utilityValue.use) === 'string') {
+                        utilityValue.use = [utilityValue.use];
                     }
 
                     const resolvedUses: ConfigCollection<ValueEntry> = {};
 
-                    for(const key of matchedTokenKeys){
-                        const formattedName = key.substring(key.indexOf(varNamePrefix) + varNamePrefix.length);
-                        resolvedUses[formattedName] = { value: `${VAR_TOKEN_OPEN}${key}${VAR_TOKEN_CLOSE}`};
+                    for(let useVar of utilityValue.use){
+
+                        let varNamePrefix = useVar;
+                        if(!varNamePrefix.endsWith(TOKEN_SEPARATOR)) {
+                            varNamePrefix = varNamePrefix + TOKEN_SEPARATOR;
+                        }
+    
+                        const matchedTokenKeys = [...varTokens.keys()].filter(k => k.startsWith(varNamePrefix));
+                        if(matchedTokenKeys.length === 0){
+                            throw new Error(`No variables match prefix ${utilityValue.use}`);
+                        }
+    
+                        for(const key of matchedTokenKeys){
+                            const formattedName = key.substring(key.indexOf(varNamePrefix) + varNamePrefix.length);
+                            resolvedUses[formattedName] = { value: `${VAR_TOKEN_OPEN}${key}${VAR_TOKEN_CLOSE}`};
+                        }
                     }
 
                     clonedUtilityEntry = {
@@ -67,6 +74,7 @@ export class UtilityVariableResolver {
                         property: utilityValue.property,
                         use: resolvedUses
                     };
+
 
                 } else {
                     clonedUtilityEntry = deepCloneUtilityEntry(utilityValue);

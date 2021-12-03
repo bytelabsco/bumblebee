@@ -6,7 +6,7 @@ export function deepCloneUtilityEntry(utilityEntry: UtilityEntry): UtilityEntry 
         throw new Error('utilityEntry must be provided');
     }
 
-    if(typeof(utilityEntry.use) === 'string') {
+    if(typeof(utilityEntry.use) === 'string' || Array.isArray(utilityEntry.use)) {
         throw new Error('variable usage must be resolved before cloning utility entry');
     }
 

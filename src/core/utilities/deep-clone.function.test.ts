@@ -20,7 +20,11 @@ test('should clone utility entry', () => {
     expect(clone.property).toBe(original.property);
 
     if(typeof(clone.use) === 'string' || typeof(original.use) === 'string') {
-        fail('use of objects should not be a string')
+        fail('use of objects should not be a string');
+    }
+
+    if(Array.isArray(clone.use) || Array.isArray(original.use)) {
+        fail('use of objects should not be a string array');
     }
 
     expect(clone.use).not.toBe(original.use);

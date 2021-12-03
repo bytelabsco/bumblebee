@@ -17,7 +17,50 @@ const sizeScale: NestedConfigCollection<VarEntry> = {
     '900': { value: baseSize * 3 + baseSizeUnits }
 };
 
-const colors: NestedConfigCollection<VarEntry> = {
+const baseColors: NestedConfigCollection<VarEntry> = {
+    'red': {
+        'light': { value: '#d48a8f' },
+        'dark': { value: '#d33f49'}
+    },
+    'orange': {
+        'light': { value: '#ffac88' },
+        'dark': { value: '#fc4c02' }
+    },
+    'yellow': {
+        'light': { value: '#f2d479' },
+        'dark': { value: '#f3b700' }
+    },
+    'green': {
+        'light': { value: '#aeffcf' },
+        'dark': { value: '#06bf6f' }
+    },
+    'blue': {
+        'light': { value: '#88c9ff' },
+        'dark': { value: '#0072ce' }
+    },
+    'teal': {
+        'light': { value: '#7ac7cc' },
+        'dark': { value: '#0ebdcb' }
+    },
+    'cyan': {
+        'light': { value: '#99f5ff' },
+        'dark': { value: '#1be7ff' }
+    },
+    'indigo': {
+        'light': { value: '#2e3742' },
+        'dark': { value: '#0a2342' }
+    },
+    'violet': {
+        'light': { value: '#65567a' },
+        'dark': { value: '#0a2342' }
+    },
+    'pink': {
+        'light': { value: '#dd7dfa' },
+        'dark': { value: '#c200fb' }
+    },
+}
+
+const themedColors: NestedConfigCollection<VarEntry> = {
     'dark': { value: '#1a1a1a', themes: {'dark': {value: '#f3f3f3'}} },
     'light': {value: '#f3f3f3', themes: {'dark': {value: '#1a1a1a'}} }
 };
@@ -47,7 +90,8 @@ export const sampleConfiguration: Configuration = {
         vars: 'my-var'
     },
     vars: {
-        colors: colors,
+        'base-colors': baseColors,
+        'theme-colors':themedColors,
         scale: sizeScale,
         breakpoints: breakpoints,
         spacing: paddingAndMargin
@@ -64,12 +108,12 @@ export const sampleConfiguration: Configuration = {
     },
     utilities: {
         'bg': {
-            use: 'colors',
+            use: 'theme-colors',
             output: 'standard',
             property: 'background'
         },
         'color': {
-            use: 'colors',
+            use: ['base-colors', 'theme-colors'],
             output: 'standard',
             property: 'color'
         },

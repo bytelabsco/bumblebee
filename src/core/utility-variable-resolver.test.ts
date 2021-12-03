@@ -27,7 +27,7 @@ test('should resolve variables', () => {
         fail('colorDef should be a UtilityEntry');
     }
 
-    if(typeof(colorDef.use) === 'string'){
+    if(typeof(colorDef.use) === 'string' || Array.isArray(colorDef.use)){
         fail('colorDef.use should be a Collection<ValueEntry>');
     }
 

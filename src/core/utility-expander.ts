@@ -44,7 +44,7 @@ export class UtilityExpander {
 
             if(isUtilityEntry(utilityValue)) {
                 
-                if(typeof(utilityValue.use) === 'string'){
+                if(typeof(utilityValue.use) === 'string' || Array.isArray(utilityValue.use)){
                     throw new Error('variables must be resolved before utility generation');
                 } else {
 
