@@ -8,6 +8,7 @@ const baseSizeUnits = 'rem';
 const baseSize = 1;
 
 const sizeScale: NestedConfigCollection<VarEntry> = {
+    '200': { value: baseSize * .05 + baseSizeUnits },
     '300': { value: baseSize * 0.8 + baseSizeUnits },
     '400': { value: baseSize + baseSizeUnits },
     '500': { value: baseSize * 1.25 + baseSizeUnits },
@@ -27,6 +28,18 @@ const breakpoints: NestedConfigCollection<VarEntry> = {
     'lg': { value: '62em' }
 }
 
+const gaps: NestedConfigCollection<VarEntry> = {
+    'top': { value: '{scale.200}' },
+    'right': { value: '{scale.200}' },
+    'bottom': { value: '{scale.200}' },
+    'left': { value: '{scale.200}' },
+}
+
+const paddingAndMargin: NestedConfigCollection<VarEntry> = {
+    'padding': gaps,
+    'margin': gaps
+}
+
 export const sampleConfiguration: Configuration = {
     outputPath: '_output',
     namespace: {
@@ -36,7 +49,8 @@ export const sampleConfiguration: Configuration = {
     vars: {
         colors: colors,
         scale: sizeScale,
-        breakpoints: breakpoints
+        breakpoints: breakpoints,
+        spacing: paddingAndMargin
     },
     breakpoints: {
         'sm': `(min-width: ${breakpoints.sm.value})`,

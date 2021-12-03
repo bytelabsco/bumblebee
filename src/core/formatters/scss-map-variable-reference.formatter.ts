@@ -1,8 +1,8 @@
 import { VAR_TOKEN_CLOSE, VAR_TOKEN_OPEN } from "../constants";
-import { cssVariableNameFormatter } from "./css-variable-name.formatter";
 import { Formatter } from "./formatter.interface";
+import { scssVariableNameFormatter } from "./scss-variable-name.formatter";
 
-export const cssVariableReferenceFormatter: Formatter<string> = (value: string) : string => {
+export const scssMapVariableReferenceFormatter: Formatter<string> = (value: string) : string => {
     
     let modifiedString = value;
 
@@ -18,13 +18,30 @@ export const cssVariableReferenceFormatter: Formatter<string> = (value: string) 
 
             const varValue = modifiedString.substr(openIdx + VAR_TOKEN_OPEN.length, closeIdx - openIdx - 1);
 
-            let styledVar = cssVariableNameFormatter(varValue);
+            let styledVar = scssFormat(varValue);
 
-            modifiedString = `${preVar}var(${styledVar})${postVar}`;
+            modifiedString = `${preVar}${styledVar}${postVar}`;
         }
 
         openIdx = modifiedString.indexOf(VAR_TOKEN_OPEN);
     }
 
     return modifiedString;
+}
+
+const scssFormat = (varName: string) : string => {
+
+    let splitVar = varName.split('.');
+
+    if(splitVar.length < 2) {
+        throw new Error(`{varName} can't be converted to sass var`);
+    }
+
+    var mapChain = `map.get(${scssVariableNameFormatter(splitVar[0])}, '${splitVar[1]}')`
+
+    for(let i = 2; i < splitVar.length; i++){
+        mapChain = `map.get(${mapChain}, '${splitVar[i]}')`;
+    }
+
+    return mapChain;
 }

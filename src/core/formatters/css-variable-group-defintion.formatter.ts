@@ -1,3 +1,4 @@
+import { cssVariableReferenceFormatter } from ".";
 import { NEW_LINE, TAB } from "../constants";
 import { VariableGroup } from "../models/variable-group";
 import { cssVariableNameFormatter } from "./css-variable-name.formatter";
@@ -7,9 +8,12 @@ export const cssVariableGroupDefinitionFormatter: Formatter<VariableGroup> = (gr
 
     let cssVariables = `${NEW_LINE}`;
 
-    for(const [key, defintion] of group.definitions) {
+    for(const [key, definition] of group.definitions) {
         const cssVariableName = cssVariableNameFormatter(key);
-        cssVariables += `${TAB}${cssVariableName}: ${defintion.value};${NEW_LINE}`;
+
+        const value = typeof(definition.value) === 'string' ? cssVariableReferenceFormatter(definition.value) : definition.value;
+
+        cssVariables += `${TAB}${cssVariableName}: ${value};${NEW_LINE}`;
     }
 
     const wrapped = group.wrapper(cssVariables);

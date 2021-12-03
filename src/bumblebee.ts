@@ -27,9 +27,7 @@ export class Bumblebee {
         if(!!config.vars) {
             builder.withVars(config.vars);
         }
-            
-        builder.withUtilities(config.utilities);
 
-        builder.build(config.outputPath);
+        builder.build(config.utilities, config.outputPath);
     }
 }
