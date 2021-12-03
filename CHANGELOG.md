@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.3.1 (2021-12-03)
+
+
+### Bug Fixes
+
+* removed unnecessary [@use](https://github.com/use) statement ([8ff4fb2](https://github.com/bytelabsco/bumblebee/commit/8ff4fb2bf8c8c18c9abbac12f716416840c6c82a))
+
 ## 0.3.0 (2021-12-03)
 
 
