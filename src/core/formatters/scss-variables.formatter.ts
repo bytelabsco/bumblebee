@@ -7,9 +7,7 @@ import { scssVariableReferenceFormatter } from "./scss-variable-reference.format
 
 export const scssVariablesFormatter: Formatter<NestedConfigCollection<VarEntry>> = (vars: NestedConfigCollection<VarEntry>) : string => {       
 
-    let scssVariables = `@use "sass:map";${NEW_LINE + NEW_LINE}`;
-
-    scssVariables += processNestedCollection(vars);
+    const scssVariables = processNestedCollection(vars);
 
     return scssVariables;
 }
