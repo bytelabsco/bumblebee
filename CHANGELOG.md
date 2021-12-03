@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.3.0 (2021-12-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* output scss variables
+
+### Features
+
+* output scss variables ([b754ac2](https://github.com/bytelabsco/bumblebee/commit/b754ac24aac8355465911db4cb2fc9f9e95a13d0))
+
 ### 0.2.4 (2021-12-01)
 
 ### 0.2.3 (2021-12-01)
