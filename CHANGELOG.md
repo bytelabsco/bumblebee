@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.3.3 (2021-12-03)
+
+
+### Features
+
+* can now reference an array of variables in utilities ([03caf53](https://github.com/bytelabsco/bumblebee/commit/03caf533a07e7d830fe6618684e7ead85f68932d))
+
 ### 0.3.2 (2021-12-03)
 
 
