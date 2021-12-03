@@ -69,8 +69,6 @@ export class FileBuilder {
 
         let variableTokens: Map<string, VarEntry> | undefined;
 
-        const tempPath = path.join(filePath, '_tmp');
-
         const scssPath = path.join(filePath, 'scss');
         const cssPath = path.join(filePath, 'css');
 
@@ -92,25 +90,32 @@ export class FileBuilder {
 
         const mixinPath = path.join(scssPath, '_mixins.scss');
         this.writeFile(mixinPath, scssMixins);
-        this.prepend(mixinPath, this._GENERATED_NOTICE);
-
 
         // SCSS Placeholders
-        var scssPlaceholders = this.generateScssPlaceholders(utilityValues, 'mixins');
+        let scssPlaceholders = this.generateScssPlaceholders(utilityValues, 'mixins');
 
         const placehoderPath = path.join(scssPath, '_placeholders.scss');
         this.writeFile(placehoderPath, scssPlaceholders);
-        this.prepend(placehoderPath, this._GENERATED_NOTICE);
+
+        // SCSS Utilities
+        let scssUtilities = `@use 'mixins' as *; ${NEW_LINE + NEW_LINE}`;
+        scssUtilities +=  cssVariables;
+        scssUtilities += this.generateScssUtilities(utilityValues);
+        
+        const scssUtilitiesPath = path.join(scssPath, 'utilities.scss');
+        this.writeFile(scssUtilitiesPath, scssUtilities);
 
         // CSS Utilities
-        var scssUtilities = this.generateScssUtilities(utilityValues);
-
-        var cssUtilitiesResult = sass.renderSync({
-            data: `${scssMixins}${NEW_LINE}${cssVariables}${NEW_LINE}${scssUtilities}`
+        let cssUtilitiesResult = sass.renderSync({
+            file: scssUtilitiesPath
         });
 
         const utilitiesPath = path.join(cssPath, 'utilities.css');
         this.writeFile(utilitiesPath, cssUtilitiesResult.css.toString());
+
+        this.prepend(mixinPath, this._GENERATED_NOTICE);
+        this.prepend(placehoderPath, this._GENERATED_NOTICE);
+        this.prepend(scssUtilitiesPath, this._GENERATED_NOTICE);
         this.prepend(utilitiesPath, this._GENERATED_NOTICE);
 
         if(this._variables && collectionSize(this._variables) > 0){
@@ -121,6 +126,8 @@ export class FileBuilder {
             this.writeFile(scssVariablesPath, scssVariables);
             this.prepend(scssVariablesPath, this._GENERATED_NOTICE);
         }
+
+
         
     }
 

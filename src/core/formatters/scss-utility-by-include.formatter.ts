@@ -24,7 +24,7 @@ export const scssUtilityByIncludeFormatter: Formatter<ScssUtilityByIncludeFormat
 
             let breakpointValue = options.breakpoints[breakpoint];
 
-            const breakpointWrapper: contentWrapper = (c) => `@media ${breakpointValue} { ${NEW_LINE}${c}${NEW_LINE}}`;
+            const breakpointWrapper: contentWrapper = (c) => `@media ${breakpointValue} { ${NEW_LINE}${c}}${NEW_LINE + NEW_LINE}`;
 
             scssUtilities += generateExtendedClasses(responsiveUtilities, {wrapper: breakpointWrapper, prefix: breakpoint}, options.mixinNamespace);
         }
